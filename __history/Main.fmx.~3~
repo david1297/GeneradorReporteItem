@@ -1,0 +1,108 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 448
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 448.000000000000000000
+    Size.Height = 97.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      Position.X = 16.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 129.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object AddItem: TButton
+      Position.X = 144.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'agregar Item'
+      OnClick = AddItemClick
+    end
+    object DateEdit1: TDateEdit
+      Date = 43354.000000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 2
+    end
+    object DateEdit2: TDateEdit
+      Date = 43354.000000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 56.000000000000000000
+      TabOrder = 3
+    end
+    object Label1: TLabel
+      Position.X = 240.000000000000000000
+      Position.Y = 32.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Fecha de Inicio:'
+      TabOrder = 5
+    end
+    object Label2: TLabel
+      Position.X = 240.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Fecha de Fin:'
+      TabOrder = 4
+    end
+    object Generar: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 6
+      Text = 'Generar'
+    end
+  end
+  object Panel2: TPanel
+    Align = Client
+    Padding.Left = 10.000000000000000000
+    Padding.Top = 10.000000000000000000
+    Padding.Right = 10.000000000000000000
+    Padding.Bottom = 10.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 383.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object ListBox1: TListBox
+      Align = Client
+      Size.Width = 428.000000000000000000
+      Size.Height = 363.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 424.000000000000000000
+      Viewport.Height = 359.000000000000000000
+    end
+  end
+  object Conexion: TFDConnection
+    Params.Strings = (
+      'Database=D:\SAIOPEN\ECOLITE SAS 2017.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'Protocol=TCPIP'
+      'Server=192.168.56.1'
+      'DriverID=FB')
+    Left = 50
+    Top = 123
+  end
+end
