@@ -2,11 +2,11 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2018/09/11 21:04:57.000.017,=D:\David\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/09/11 21:13:18.000.288,C:\Proyectos\GeneradorReporteItem\Main.fmx=D:\David\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
-    <Transaction>2018/09/11 21:13:18.000.288,C:\Proyectos\GeneradorReporteItem\Main.pas=D:\David\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/09/11 21:13:49.000.727,C:\Proyectos\GeneradorReporteItem\Reporte.dproj=D:\David\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2018/09/11 21:13:18.000.288,D:\David\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Proyectos\GeneradorReporteItem\Main.fmx</Transaction>
+    <Transaction>2018/09/11 21:13:18.000.288,D:\David\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Proyectos\GeneradorReporteItem\Main.pas</Transaction>
+    <Transaction>2018/09/11 21:13:49.000.727,D:\David\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Proyectos\GeneradorReporteItem\Reporte.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5"/>
-	</ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android="NEXUS6"/>  <P132 iOSSimulator="iPhone5"/>
+  </ActiveMobileDevice>
 </BorlandProject>

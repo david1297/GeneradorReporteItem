@@ -29,7 +29,7 @@ object Form1: TForm1
       Size.Width = 89.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 1
+      TabOrder = 2
       Text = 'agregar Item'
       OnClick = AddItemClick
     end
@@ -37,13 +37,13 @@ object Form1: TForm1
       Date = 43354.000000000000000000
       Position.X = 328.000000000000000000
       Position.Y = 32.000000000000000000
-      TabOrder = 2
+      TabOrder = 3
     end
     object DateEdit2: TDateEdit
       Date = 43354.000000000000000000
       Position.X = 328.000000000000000000
       Position.Y = 56.000000000000000000
-      TabOrder = 3
+      TabOrder = 4
     end
     object Label1: TLabel
       Position.X = 240.000000000000000000
@@ -52,7 +52,7 @@ object Form1: TForm1
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       Text = 'Fecha de Inicio:'
-      TabOrder = 5
+      TabOrder = 6
     end
     object Label2: TLabel
       Position.X = 240.000000000000000000
@@ -61,14 +61,24 @@ object Form1: TForm1
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       Text = 'Fecha de Fin:'
-      TabOrder = 4
+      TabOrder = 5
     end
     object Generar: TButton
       Position.X = 16.000000000000000000
       Position.Y = 64.000000000000000000
-      TabOrder = 6
+      TabOrder = 7
       Text = 'Generar'
       OnClick = GenerarClick
+    end
+    object Button1: TButton
+      Position.X = 144.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Eliminar Item'
+      OnClick = Button1Click
     end
   end
   object Panel2: TPanel
@@ -97,18 +107,105 @@ object Form1: TForm1
   end
   object Conexion: TFDConnection
     Params.Strings = (
-      'Database=D:\SAIOPEN\ECOLITE SAS 2017.FDB'
+      'Database=D:\Saiopen\POLI2011SAS.GDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
       'Server=192.168.56.1'
       'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
     Left = 50
     Top = 123
   end
   object Qconsulta: TFDQuery
     Connection = Conexion
+    SQL.Strings = (
+      
+        'SELECT  I.ITEM,I.ID_N,C.COMPANY,(extract(year from I.FECHA) || s' +
+        'ubstring((extract(month from I.FECHA) + 100) from 2 for 2)) as P' +
+        'ERIODO,I.FECHA,I.TIPO,I.BATCH,I.QTY,I.VALUNIT,I.TOTPARCIAL,I.LOC' +
+        'ATION'
+      ''
+      'FROM ITEMACT I'
+      'INNER JOIN CUST C ON I.ID_N= C.ID_N'
+      'WHERE FECHA between :FI AND :FF')
     Left = 258
     Top = 227
+    ParamData = <
+      item
+        Name = 'FI'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'FF'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end>
+    object QconsultaITEM: TStringField
+      FieldName = 'ITEM'
+      Origin = 'ITEM'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object QconsultaID_N: TStringField
+      FieldName = 'ID_N'
+      Origin = 'ID_N'
+      FixedChar = True
+      Size = 30
+    end
+    object QconsultaCOMPANY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMPANY'
+      Origin = 'COMPANY'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 35
+    end
+    object QconsultaPERIODO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PERIODO'
+      Origin = 'PERIODO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 26
+    end
+    object QconsultaFECHA: TSQLTimeStampField
+      FieldName = 'FECHA'
+      Origin = 'FECHA'
+    end
+    object QconsultaTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 3
+    end
+    object QconsultaBATCH: TIntegerField
+      FieldName = 'BATCH'
+      Origin = 'BATCH'
+    end
+    object QconsultaQTY: TFloatField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+    end
+    object QconsultaVALUNIT: TFloatField
+      FieldName = 'VALUNIT'
+      Origin = 'VALUNIT'
+    end
+    object QconsultaTOTPARCIAL: TFloatField
+      FieldName = 'TOTPARCIAL'
+      Origin = 'TOTPARCIAL'
+    end
+    object QconsultaLOCATION: TStringField
+      FieldName = 'LOCATION'
+      Origin = 'LOCATION'
+      Required = True
+      FixedChar = True
+      Size = 3
+    end
   end
 end
