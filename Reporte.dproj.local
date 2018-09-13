@@ -7,6 +7,7 @@
     <Transaction>2018/09/11 21:13:49.000.727,D:\David\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Proyectos\GeneradorReporteItem\Reporte.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="NEXUS6"/>  <P132 iOSSimulator="iPhone5"/>
-  </ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android=""/>
+		<P132 iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
 </BorlandProject>

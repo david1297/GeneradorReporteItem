@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 480
+  ClientHeight = 293
   ClientWidth = 448
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -88,13 +88,13 @@ object Form1: TForm1
     Padding.Right = 10.000000000000000000
     Padding.Bottom = 10.000000000000000000
     Size.Width = 448.000000000000000000
-    Size.Height = 383.000000000000000000
+    Size.Height = 196.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object ListBox1: TListBox
       Align = Client
       Size.Width = 428.000000000000000000
-      Size.Height = 363.000000000000000000
+      Size.Height = 176.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       DisableFocusEffect = True
@@ -102,18 +102,17 @@ object Form1: TForm1
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 424.000000000000000000
-      Viewport.Height = 359.000000000000000000
+      Viewport.Height = 172.000000000000000000
     end
   end
   object Conexion: TFDConnection
     Params.Strings = (
-      'Database=D:\Saiopen\POLI2011SAS.GDB'
+      'Database=D:\SAIOPEN\ECOLITE SAS 2017.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
       'Server=192.168.56.1'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 50
     Top = 123

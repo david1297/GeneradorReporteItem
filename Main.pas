@@ -102,16 +102,10 @@ begin
   Qconsulta.ParamByName('FI').AsDate := DateEdit1.Date;
   Qconsulta.ParamByName('FF').AsDate := DateEdit2.Date;
   Qconsulta.Open;
-  // uses ComObj;
-  // Crea una aplicacion Excel.
   Excel := CreateOleObject('Excel.Application');
-  // La muestra (vas a ver un Excel como si lu ubieras ejecutado)
   Excel.Visible := True;
-  // Agrega un libro.
   Excel.WorkBooks.Add(-4167);
-  // Le asigna un nombre al libro
   Excel.WorkBooks[1].WorkSheets[1].Name := 'Reporte';
-  // Hace un puntero al libro del Excel.
   Libro := Excel.WorkBooks[1].WorkSheets['Reporte'];
   Qconsulta.First;
   I := 2;
@@ -123,8 +117,8 @@ begin
   Libro.Cells[1, 6] := 'TIPO';
   Libro.Cells[1, 7] := 'NUMERO';
   Libro.Cells[1, 8] := 'CANTIDAD';
-  Libro.Cells[1, 9] := 'VALOR UNITARIO';
-  Libro.Cells[1, 10] := 'TOTAL PARCIAL';
+  Libro.Cells[1, 9] := 'COSTO UNITARIO';
+  Libro.Cells[1, 10] := 'COSTO TOTAL';
   Libro.Cells[1, 11] := 'BODEGA';
   while not Qconsulta.Eof do
   begin
