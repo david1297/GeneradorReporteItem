@@ -1,9 +1,10 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Generador de Reporte'
   ClientHeight = 293
   ClientWidth = 448
+  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,21 +12,21 @@ object Form1: TForm1
   object Panel1: TPanel
     Align = Top
     Size.Width = 448.000000000000000000
-    Size.Height = 97.000000000000000000
+    Size.Height = 105.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 0
       Position.X = 16.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 129.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
     end
     object AddItem: TButton
       Position.X = 144.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
@@ -36,18 +37,18 @@ object Form1: TForm1
     object DateEdit1: TDateEdit
       Date = 43354.000000000000000000
       Position.X = 328.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.Y = 40.000000000000000000
       TabOrder = 3
     end
     object DateEdit2: TDateEdit
       Date = 43354.000000000000000000
       Position.X = 328.000000000000000000
-      Position.Y = 56.000000000000000000
+      Position.Y = 64.000000000000000000
       TabOrder = 4
     end
     object Label1: TLabel
       Position.X = 240.000000000000000000
-      Position.Y = 32.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
@@ -56,7 +57,7 @@ object Form1: TForm1
     end
     object Label2: TLabel
       Position.X = 240.000000000000000000
-      Position.Y = 56.000000000000000000
+      Position.Y = 64.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
@@ -65,20 +66,39 @@ object Form1: TForm1
     end
     object Generar: TButton
       Position.X = 16.000000000000000000
-      Position.Y = 64.000000000000000000
+      Position.Y = 72.000000000000000000
       TabOrder = 7
       Text = 'Generar'
       OnClick = GenerarClick
     end
     object Button1: TButton
       Position.X = 144.000000000000000000
-      Position.Y = 64.000000000000000000
+      Position.Y = 72.000000000000000000
       Size.Width = 89.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       Text = 'Eliminar Item'
       OnClick = Button1Click
+    end
+    object Edit2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 8
+      Text = 'D:\Saiopen\POLI2011SAS.GDB'
+      Position.X = 104.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 321.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Label3: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Base de Datos:'
+      TabOrder = 9
     end
   end
   object Panel2: TPanel
@@ -88,13 +108,13 @@ object Form1: TForm1
     Padding.Right = 10.000000000000000000
     Padding.Bottom = 10.000000000000000000
     Size.Width = 448.000000000000000000
-    Size.Height = 196.000000000000000000
+    Size.Height = 188.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object ListBox1: TListBox
       Align = Client
       Size.Width = 428.000000000000000000
-      Size.Height = 176.000000000000000000
+      Size.Height = 168.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       DisableFocusEffect = True
@@ -102,35 +122,41 @@ object Form1: TForm1
       DefaultItemStyles.GroupHeaderStyle = ''
       DefaultItemStyles.GroupFooterStyle = ''
       Viewport.Width = 424.000000000000000000
-      Viewport.Height = 172.000000000000000000
+      Viewport.Height = 164.000000000000000000
     end
   end
   object Conexion: TFDConnection
     Params.Strings = (
-      'Database=D:\SAIOPEN\ECOLITE SAS 2017.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
-      'Server=192.168.56.1'
+      'Database=D:\Saiopen\POLI2011SAS.GDB'
+      'Server=10.10.10.226'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 50
-    Top = 123
+    Top = 131
   end
   object Qconsulta: TFDQuery
     Connection = Conexion
     SQL.Strings = (
       
-        'SELECT  I.ITEM,I.ID_N,C.COMPANY,(extract(year from I.FECHA) || s' +
-        'ubstring((extract(month from I.FECHA) + 100) from 2 for 2)) as P' +
-        'ERIODO,I.FECHA,I.TIPO,I.BATCH,I.QTY,I.VALUNIT,I.TOTPARCIAL,I.LOC' +
-        'ATION'
-      ''
-      'FROM ITEMACT I'
-      'INNER JOIN CUST C ON I.ID_N= C.ID_N'
-      'WHERE FECHA between :FI AND :FF')
-    Left = 258
-    Top = 227
+        'SELECT O1.ITEM,C.ID_N,C.COMPANY ,(extract(year from O.FECHA) || ' +
+        'substring((extract(month from O.FECHA) + 100) from 2 for 2)) as ' +
+        'PERIODO,'
+      
+        'O.FECHA,O.TIPO,O.NUMBER,O1.QTYSHIP,O1.PRICE,O1.EXTEND,O1.COST,(O' +
+        '1.COST*O1.QTYSHIP) COSTO_TOTAL,'
+      
+        '((O1.EXTEND-(O1.COST*O1.QTYSHIP))/O1.EXTEND)*100 AS MARGEN,O1.LO' +
+        'CATION'
+      'FROM OE O'
+      'INNER JOIN OEDET O1 ON O.TIPO = O1.TIPO AND O.NUMBER =O1.NUMBER'
+      'INNER JOIN CUST C ON O.ID_N= C.ID_N'
+      'WHERE O.FECHA between :FI AND :FF AND O1.QTYSHIP <>0')
+    Left = 250
+    Top = 235
     ParamData = <
       item
         Name = 'FI'
@@ -153,24 +179,19 @@ object Form1: TForm1
     object QconsultaID_N: TStringField
       FieldName = 'ID_N'
       Origin = 'ID_N'
+      Required = True
       FixedChar = True
       Size = 30
     end
     object QconsultaCOMPANY: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'COMPANY'
       Origin = 'COMPANY'
-      ProviderFlags = []
-      ReadOnly = True
       FixedChar = True
       Size = 35
     end
     object QconsultaPERIODO: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'PERIODO'
       Origin = 'PERIODO'
-      ProviderFlags = []
-      ReadOnly = True
       Size = 26
     end
     object QconsultaFECHA: TSQLTimeStampField
@@ -180,26 +201,138 @@ object Form1: TForm1
     object QconsultaTIPO: TStringField
       FieldName = 'TIPO'
       Origin = 'TIPO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
       FixedChar = True
       Size = 3
     end
-    object QconsultaBATCH: TIntegerField
+    object QconsultaNUMBER: TIntegerField
+      FieldName = 'NUMBER'
+      Origin = 'NUMBER'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QconsultaQTYSHIP: TFloatField
+      FieldName = 'QTYSHIP'
+      Origin = 'QTYSHIP'
+    end
+    object QconsultaPRICE: TFloatField
+      FieldName = 'PRICE'
+      Origin = 'PRICE'
+    end
+    object QconsultaEXTEND: TFloatField
+      FieldName = 'EXTEND'
+      Origin = 'EXTEND'
+    end
+    object QconsultaCOST: TFloatField
+      FieldName = 'COST'
+      Origin = 'COST'
+    end
+    object QconsultaCOSTO_TOTAL: TFloatField
+      FieldName = 'COSTO_TOTAL'
+      Origin = 'COSTO_TOTAL'
+    end
+    object QconsultaMARGEN: TFloatField
+      FieldName = 'MARGEN'
+      Origin = 'MARGEN'
+    end
+    object QconsultaLOCATION: TStringField
+      FieldName = 'LOCATION'
+      Origin = 'LOCATION'
+      Required = True
+      FixedChar = True
+      Size = 3
+    end
+  end
+  object QEnsamble: TFDQuery
+    Connection = Conexion
+    SQL.Strings = (
+      
+        'SELECT  I.ITEM,I.ID_N,C.COMPANY,(extract(year from I.FECHA) || s' +
+        'ubstring((extract(month from I.FECHA) + 100) from 2 for 2)) as P' +
+        'ERIODO,'
+      
+        'I.FECHA,I.TIPO,I.BATCH,IIF(I.QTY <0,I.QTY*(-1),I.QTY )QTY,I.VALU' +
+        'NIT,I.TOTPARCIAL,I.LOCATION'
+      ''
+      'FROM ITEMACT I'
+      ''
+      'INNER JOIN CUST C ON I.ID_N= C.ID_N'
+      'WHERE FECHA between :FI AND :FF AND QTY <>0')
+    Left = 266
+    Top = 155
+    ParamData = <
+      item
+        Name = 'FI'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'FF'
+        DataType = ftTimeStamp
+        ParamType = ptInput
+      end>
+    object QEnsambleITEM: TStringField
+      FieldName = 'ITEM'
+      Origin = 'ITEM'
+      Required = True
+      FixedChar = True
+      Size = 30
+    end
+    object QEnsambleID_N: TStringField
+      FieldName = 'ID_N'
+      Origin = 'ID_N'
+      FixedChar = True
+      Size = 30
+    end
+    object QEnsambleCOMPANY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'COMPANY'
+      Origin = 'COMPANY'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 35
+    end
+    object QEnsamblePERIODO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PERIODO'
+      Origin = 'PERIODO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 26
+    end
+    object QEnsambleFECHA: TSQLTimeStampField
+      FieldName = 'FECHA'
+      Origin = 'FECHA'
+    end
+    object QEnsambleTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      FixedChar = True
+      Size = 3
+    end
+    object QEnsambleBATCH: TIntegerField
       FieldName = 'BATCH'
       Origin = 'BATCH'
     end
-    object QconsultaQTY: TFloatField
+    object QEnsambleQTY: TFloatField
+      AutoGenerateValue = arDefault
       FieldName = 'QTY'
       Origin = 'QTY'
+      ProviderFlags = []
+      ReadOnly = True
     end
-    object QconsultaVALUNIT: TFloatField
+    object QEnsambleVALUNIT: TFloatField
       FieldName = 'VALUNIT'
       Origin = 'VALUNIT'
     end
-    object QconsultaTOTPARCIAL: TFloatField
+    object QEnsambleTOTPARCIAL: TFloatField
       FieldName = 'TOTPARCIAL'
       Origin = 'TOTPARCIAL'
     end
-    object QconsultaLOCATION: TStringField
+    object QEnsambleLOCATION: TStringField
       FieldName = 'LOCATION'
       Origin = 'LOCATION'
       Required = True
